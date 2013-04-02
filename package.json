@@ -1,0 +1,28 @@
+{
+  "name": "xor64",
+  "version": "0.0.2",
+  "description": "simple pure js library for generating random 64 bit numbers with XOR support",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "testing": "supervisor -e js -n exit -- test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/curasystems/node-xor64.git"
+  },
+  "keywords": [
+    "xor",
+    "int64",
+    "rand",
+    "random"
+  ],
+  "author": "Matthias Goetzke",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "a9f3ca9d6c8839656acebbf221bab87f127b26f1",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
