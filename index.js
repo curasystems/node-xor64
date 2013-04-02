@@ -15,6 +15,19 @@ module.exports.clone = function(original){
     return create(loValue(original),hiValue(original));
 }
 
+module.exports.toHexString = function(value){
+    loHex = toPaddedHex(loValue(value));
+    hiHex = toPaddedHex(hiValue(value));
+    
+    return hiHex+loHex;
+}
+
+function toPaddedHex(d){
+  var hex = Number(d).toString(16);
+  hex = "00000000".substr(0, 8 - hex.length) + hex; 
+  return hex;
+}
+
 module.exports.xor = function(x,y){
     return create( loValue(x) ^ loValue(y),  hiValue(x) ^ hiValue(y) );
 };

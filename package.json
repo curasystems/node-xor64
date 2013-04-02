@@ -1,6 +1,6 @@
 {
   "name": "xor64",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "simple pure js library for generating random 64 bit numbers with XOR support",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "xor",
     "int64",
     "rand",
-    "random"
+    "random",
+    "storm"
   ],
   "author": "Matthias Goetzke",
   "license": "BSD",

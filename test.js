@@ -49,7 +49,7 @@ assert( xor64.equal(valueToChange,expectedResult), 'xorApply should have stored 
 console.log('applying multiple xors, each exactly twice should result in original value')
 
 var original = xor64.createRandom();
-console.log(original);
+//console.log(original);
 var work = xor64.clone(original);
 xor64.applyXor(work,x);
 xor64.applyXor(work,y);
@@ -64,9 +64,14 @@ xor64.applyXor(v,o);
 assert( xor64.applyXor(v,o) === undefined );
 assert( xor64.applyXor(v,v) === 0, 'all values xor\'ed twice should return 0');
 
+console.log('toString');
+var stringTest = xor64.create(0x2324,0x12);
+//console.log(xor64.toHexString(stringTest));
+assert( xor64.toHexString(stringTest) == '0000001200002324');
+
 
 console.log('speed test')
-var TEST_RANGE = 100000;
+var TEST_RANGE = 1000000;
 
 console.log("Creating " + TEST_RANGE + " random 64bit numbers ...")
 startedAt = new Date;
@@ -80,19 +85,15 @@ console.log("Created " + TEST_RANGE + " random 64bit numbers. Speed " + numbersP
 
 // Create a lot of random numbers and then find out whether any was already created
 // they shouldn't have.
-var randomNumbers = [];
+var randomNumbers = {};
 
-console.log("Creating " + TEST_RANGE + " random 64bit numbers ...")
+console.log("Creating " + TEST_RANGE + " random 64bit numbers and checking uniqueness...")
 
 for (var i = 0; i < TEST_RANGE; i++) {
 
     var newRandom = xor64.createRandom();
-
-    for (var i = 0; i < randomNumbers.length; i++) {
-        assert( xor64.equal(newRandom, randomNumbers[i]) == false, "Numbers should be uniquish");
-    };
-
-    randomNumbers.push( newRandom );
+    assert( randomNumbers[xor64.toHexString(newRandom)] === undefined, "random numbers should be unique for small number of iterations" );
+    randomNumbers[xor64.toHexString(newRandom)] = true;
 };
 
 /*
