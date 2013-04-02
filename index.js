@@ -16,8 +16,8 @@ module.exports.clone = function(original){
 }
 
 module.exports.toHexString = function(value){
-    loHex = toPaddedHex(loValue(value));
-    hiHex = toPaddedHex(hiValue(value));
+    var loHex = toPaddedHex(loValue(value));
+    var hiHex = toPaddedHex(hiValue(value));
     
     return hiHex+loHex;
 }
