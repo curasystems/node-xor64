@@ -24,6 +24,14 @@ var a1 = xor64.create(913,741);
 var cloned = xor64.clone(a1);
 assert( xor64.equal(a1,cloned) == true, "cloned values should be equal");
 
+console.log('read/write to/from buffer');
+var a1 = xor64.create(913,741);
+var buffer = new Buffer(50);
+xor64.write(a1, buffer, 10);
+var a2 = xor64.read(buffer,10);
+assert( xor64.equal(a1,a2) == true, "buffer written/read values should be equal");
+
+
 console.log('create random (8 bytes)')
 var a = xor64.createRandom();
 assert( a.length == 8 , "values are 64 bit == 8 bytes");

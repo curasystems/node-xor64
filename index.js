@@ -28,6 +28,16 @@ function toPaddedHex(d){
   return hex;
 }
 
+module.exports.write = function( value, target, offset ){
+  value.copy(target, offset);
+}
+
+module.exports.read = function( source, offset ){
+  var target = new Buffer(8);
+  source.copy(target,0,offset,offset+8-1);
+  return target;
+}
+
 module.exports.xor = function(x,y){
     return create( loValue(x) ^ loValue(y),  hiValue(x) ^ hiValue(y) );
 };
