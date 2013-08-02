@@ -70,6 +70,41 @@ var stringTest = xor64.create(0x2324,0x12);
 assert( xor64.toHexString(stringTest) == '0000001200002324');
 
 
+console.log('xor acking should be possible');
+var m = xor64.create(83931,19812);
+
+// use 0,0 as start (even though we could just clone it)
+var ack = xor64.create(0,0);
+
+// m = +pending message
+xor64.applyXor(ack,m);
+
+// dependentMessages  = 3 messages linked to original m
+var dependentMessages = xor64.create(0,0);
+
+var x = xor64.create(1010,2139);
+var y = xor64.create(1012,2392);
+var z = xor64.create(1013,2329);
+
+// merge them all together
+xor64.applyXor(dependentMessages,x);
+xor64.applyXor(dependentMessages,y);
+xor64.applyXor(dependentMessages,z);
+
+// ack the combined dependent messages and the original message
+xor64.applyXor(ack, dependentMessages);
+xor64.applyXor(ack, m);
+
+// ack all new messages one by one
+xor64.applyXor(ack, x);
+xor64.applyXor(ack, y);
+xor64.applyXor(ack, z);
+
+// everything should be 0 again
+var expectedResult = xor64.create(0,0);
+assert( xor64.equal(ack,expectedResult), 'all ids should have been xor_ed out' );
+
+
 console.log('speed test')
 var TEST_RANGE = 1000000;
 
@@ -102,3 +137,4 @@ for (var i = randomNumbers.length - 1; i >= 0; i--) {
 };*/
 
 console.log("Created " + TEST_RANGE + " random 64bit numbers. All unique.")
+
