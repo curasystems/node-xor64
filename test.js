@@ -11,6 +11,7 @@ console.log('create 0 value');
 var empty = xor64.create();
 assert( xor64.loValue(empty) == 0 );
 assert( xor64.hiValue(empty) == 0 );
+assert( xor64.isZero(empty) == true, "value is zero");
 
 console.log('compare for equality')
 var n = xor64.create( 65, 42 );
@@ -18,6 +19,7 @@ assert( xor64.equal(m,n) == false, "values should not be equal" );
 
 var m2 = xor64.create( 12, 15 );
 assert( xor64.equal(m,m2) == true, "values should be equal");
+assert( xor64.isZero(m) == false, "value is not zero");
 
 console.log('cloning');
 var a1 = xor64.create(913,741);

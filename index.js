@@ -66,8 +66,12 @@ module.exports.hiValue = hiValue = function(xor64) {
 };
 
 module.exports.equal = function(a,b){
-    return (loValue(a) == loValue(b) && hiValue(a) == hiValue(b));
+  return (loValue(a) == loValue(b) && hiValue(a) == hiValue(b));
 };
+
+module.exports.isZero = function(v){
+  return (loValue(v) == 0 && hiValue(v) == 0);
+}
 
 var INT32_MAX = 0x7FFFFFFF;
 var INT32_MIN = 0x80000000;

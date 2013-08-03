@@ -1,6 +1,6 @@
 {
   "name": "xor64",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "simple pure js library for generating random 64 bit numbers with XOR support",
   "main": "index.js",
   "scripts": {
