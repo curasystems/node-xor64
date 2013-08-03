@@ -25,7 +25,7 @@ var cloned = xor64.clone(a1);
 assert( xor64.equal(a1,cloned) == true, "cloned values should be equal");
 
 console.log('read/write to/from buffer');
-var a1 = xor64.create(913,741);
+var a1 = xor64.createRandom();
 var buffer = new Buffer(50);
 xor64.write(a1, buffer, 10);
 var a2 = xor64.read(buffer,10);

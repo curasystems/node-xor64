@@ -34,7 +34,7 @@ module.exports.write = function( value, target, offset ){
 
 module.exports.read = function( source, offset ){
   var target = new Buffer(8);
-  source.copy(target,0,offset,offset+8-1);
+  source.copy(target,0,offset,offset+8);
   return target;
 }
 
